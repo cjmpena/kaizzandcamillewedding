@@ -1,0 +1,242 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Dancing+Script:wght@700&family=Georgia&display=swap');
+
+body {
+    font-family: 'Georgia', serif; /* Elegant serif font */
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+
+    /* Set the background image */
+    background-image: url('images/background.jpg'); /* Change this to the correct path of your image */
+    background-size: cover; /* Ensure the image covers the whole page */
+    background-position: center center; /* Center the image */
+    background-attachment: fixed; /* Keep the background fixed during scroll */
+    min-height: 100vh; /* Make sure the body covers the full viewport height */
+
+    position: relative;
+}
+
+/* Adding a semi-transparent white overlay to make the image subtle */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6); /* White overlay with 60% opacity */
+    z-index: -1; /* Keep the overlay behind other content */
+}
+
+/* Navigation Bar Styling */
+.navbar {
+    background-color: rgb(72, 60, 50, 0.9);
+    padding: 15px 0;
+    color: rgb(201, 194, 189);
+}
+
+.navbar-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: #f8f8f8;
+}
+
+.navbar-brand:hover {
+    color: rgb(201, 194, 189); /* Hover color */
+}
+
+.navbar-nav .nav-link {
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    color: #f8f8f8;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgb(201, 194, 189);
+}
+
+/* Footer Navbar */
+.footer-navbar {
+    background-color: rgb(72, 60, 50, 0.9);
+    padding: 30px 0;
+    color: #f8f8f8; /* Matching elegant mauve */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer-navbar .footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-navbar .nav-item {
+    margin: 0 15px;
+}
+
+.footer-navbar .nav-link {
+    text-decoration: none;
+    color: #f8f8f8;;
+    font-size: 1.1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-navbar .nav-link:hover {
+    color: rgb(201, 194, 189); /* Same hover color as your navbar */
+}
+
+.footer-navbar .footer-text {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: rgb(201, 194, 189);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Countdown Timer Styling */
+.countdown-container {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.countdown-box {
+    display: inline-block;
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+    padding: 20px 40px;
+    color: white;
+    background-color: rgba(108, 133, 80, 0.8); /* Soft green with opacity */
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.countdown-box:hover {
+    background-color: rgba(108, 133, 80, 1); /* Solid green on hover */
+}
+
+/* FAQ Section Styling */
+.faq-section {
+    padding: 40px 20px;
+    background-color: transparent; /* Background of the entire section remains transparent */
+}
+
+.faq-section .accordion-item {
+    border: none; /* Remove the border around each accordion item */
+    background-color: rgba(108, 133, 80, 0.2); /* Light sage green background for each item */
+    margin-bottom: 10px; /* Space between items */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.faq-section .accordion-button {
+    background-color: rgba(108, 133, 80, 0.6); /* Slightly darker green for button */
+    color: #333; /* Text color */
+    font-weight: bold;
+    font-family: 'Georgia', serif; /* Apply Georgia font to the button */
+    border: none; /* Remove border from button */
+}
+
+.faq-section .accordion-button:focus {
+    box-shadow: none; /* Remove focus outline */
+}
+
+.faq-section .accordion-body {
+    background-color: rgba(108, 133, 80, 0.4); /* Light green for the content */
+    color: #333; /* Text color */
+    padding: 15px 20px;
+    font-family: 'Georgia', serif; /* Apply Georgia font to the content */
+    border-radius: 5px; /* Rounded corners for the content */
+}
+
+
+/* Wedding Header Section */
+.wedding-header {
+    background: rgba(108, 133, 80, 0.6); /* Adjust opacity: 0.5 for a lighter look */
+    color: rgb(72, 60, 50); /* Elegant mauve */
+    padding: 50px 20px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.wedding-header h5 {
+    font-family: 'Cinzel', serif; /* Elegant serif for "Save the Date" */
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: rgb(106, 92, 81);
+}
+
+.wedding-header h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: rgb(72, 60, 50);
+}
+
+.wedding-header .subheading {
+    font-family: 'Dancing Script', cursive; /* Elegant script for subheading */
+    font-size: 1.8rem;
+    color: rgb(106, 92, 81);
+    margin-top: 10px;
+}
+
+/* Content Section */
+.content p {
+    font-family: 'Georgia', serif;
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #5f5f5f;
+}
+
+.content p:hover {
+    color: #6a4f4b;
+}
+
+body, h1, p {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Responsive Video Container */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    margin-top: 40px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
