@@ -16,15 +16,16 @@ body {
 
 /* For tablet and mobile devices (max-width: 768px) */
 @media (max-width: 768px) {
-    body {
-        background-position: left center; /* Align the background to the left on smaller screens */
+    body.index-page {
+        background-position: left center !important; /* Ensure it overrides other rules */
     }
 }
 
+
 /* For very small devices (portrait phones) */
 @media (max-width: 480px) {
-    body {
-        background-position: left; /* Align the background to the left and top for very small devices */
+    body.index-page {
+        background-position: left !important; /* Ensure it overrides other rules */
     }
 }
 
