@@ -17,19 +17,23 @@ h2, h6{
     font-family: 'Georgia', serif;
 }
 
-/* For tablet and mobile devices (max-width: 768px) */
+/* For tablets and smaller screens (max-width: 768px) */
 @media (max-width: 768px) {
     body {
-        background-position: left center; /* Align the background to the left on smaller screens */
+        background-position: 30% center; /* Slightly shift the background to the left */
+        background-size: cover; /* Ensure the background image covers the entire screen */
     }
 }
 
 /* For very small devices (portrait phones) */
 @media (max-width: 480px) {
     body {
-        background-position: left; /* Align the background to the left and top for very small devices */
+        background-position: 15% center; /* Slightly shift the background even more to the left */
+        background-size: cover; /* Ensure the background image covers the entire screen */
     }
 }
+
+
 
 /* Adding a semi-transparent white overlay */
 body::before {
