@@ -24,7 +24,7 @@ body {
 /* For very small devices (portrait phones) */
 @media (max-width: 480px) {
     body {
-        background-position: left top; /* Align the background to the left and top for very small devices */
+        background-position: left; /* Align the background to the left and top for very small devices */
     }
 }
 
