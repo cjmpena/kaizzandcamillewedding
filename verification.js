@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const correctPin = "061425"; 
+    const correctPin = "1234"; 
     
     if (!localStorage.getItem("authenticated")) {
         let userPin = prompt("Please enter the PIN to access this website:");
