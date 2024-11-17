@@ -1,6 +1,5 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Dancing+Script:wght@700&family=Georgia&display=swap');
-
 body {
     font-family: 'Georgia', serif; /* Elegant serif font */
     background-color: #f8f8f8;
@@ -63,9 +62,9 @@ body::before {
 .footer-navbar {
     background-color: rgb(72, 60, 50, 0.9);
     padding: 30px 0;
-    color: #f8f8f8; /* Matching elegant mauve */
-    position: relative;
-    bottom: 0;
+    color: #f8f8f8;
+    text-align: center;
+    margin-top: auto; /* Pushes footer to the bottom of the page */
     width: 100%;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -100,6 +99,13 @@ body::before {
     color: rgb(201, 194, 189);
 }
 
+.footer-credit {
+    font-size: 0.9rem;
+    color: #ccc; /* Light color to make it less prominent */
+    margin-top: 15px;
+    text-align: center;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -130,8 +136,7 @@ body::before {
 
 /* FAQ Section Styling */
 .faq-section {
-    padding: 40px 20px;
-    background-color: transparent; /* Background of the entire section remains transparent */
+    flex-grow: 1; /* Allows the FAQ section to grow and fill available space */
 }
 
 .faq-section .accordion-item {
