@@ -152,7 +152,7 @@ body::before {
 }
 
 .footer-navbar .nav-link:hover {
-    color: rgb(201, 194, 189); /* Same hover color as your navbar */
+    color: rgb(201, 194, 189);
 }
 
 .footer-navbar .footer-text {
@@ -162,8 +162,8 @@ body::before {
 }
 
 .footer-credit {
-    font-size: 0.9rem;
-    color: #ccc; /* Light color to make it less prominent */
+    font-size: 0.5rem;
+    color: rgb(201, 194, 189);
     margin-top: 15px;
     text-align: center;
 }
