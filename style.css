@@ -167,10 +167,9 @@ body::before {
 }
 
 
-/* Wedding Header Section */
 .wedding-header {
-    background: rgba(108, 133, 80, 0.6); /* Adjust opacity: 0.5 for a lighter look */
-    color: rgb(72, 60, 50); /* Elegant mauve */
+    background: rgba(108, 133, 80, 0.6);
+    color: rgb(72, 60, 50);
     padding: 50px 20px;
     border-radius: 10px;
     margin-bottom: 40px;
@@ -178,7 +177,7 @@ body::before {
 }
 
 .wedding-header h5 {
-    font-family: 'Cinzel', serif; /* Elegant serif for "Save the Date" */
+    font-family: 'Cinzel', serif;
     font-size: 1.4rem;
     font-weight: bold;
     letter-spacing: 2px;
@@ -196,13 +195,13 @@ body::before {
 }
 
 .wedding-header .subheading {
-    font-family: 'Dancing Script', cursive; /* Elegant script for subheading */
+    font-family: 'Dancing Script', cursive;
     font-size: 1.8rem;
     color: rgb(106, 92, 81);
     margin-top: 10px;
 }
 
-/* Content Section */
+
 .content p {
     font-family: 'Georgia', serif;
     font-size: 1.2rem;
@@ -220,14 +219,13 @@ body, h1, p {
     transition: all 0.3s ease-in-out;
 }
 
-/* Responsive Video Container */
 .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     max-width: 100%;
-    background: #000;
+    background: #f8f8f8;
     margin-top: 40px;
 }
 
