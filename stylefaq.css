@@ -1,6 +1,15 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Dancing+Script:wght@700&family=Georgia&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Flexbox layout */
+}
+
 body {
+    font-family: 'Georgia', serif;
     background-color: #f8f8f8;
     color: #333;
     line-height: 1.6;
@@ -11,10 +20,6 @@ body {
     background-attachment: fixed;
     min-height: 100vh;
     position: relative;
-}
-
-h2, h6{
-    font-family: 'Georgia', serif;
 }
 
 /* For tablet and mobile devices (max-width: 768px) */
@@ -74,7 +79,6 @@ body::before {
 
 /* Footer Navbar */
 .footer-navbar {
-    font-family: 'Georgia', serif;
     background-color: rgb(72, 60, 50, 0.9);
     padding: 30px 0;
     color: #f8f8f8;
@@ -181,7 +185,7 @@ body::before {
     border-radius: 5px; /* Rounded corners for the content */
 }
 
-
+/* Wedding Header Styling */
 .wedding-header {
     background: rgba(108, 133, 80, 0.6);
     color: rgb(72, 60, 50);
@@ -216,7 +220,7 @@ body::before {
     margin-top: 10px;
 }
 
-
+/* Content Paragraph Styling */
 .content p {
     font-family: 'Georgia', serif;
     font-size: 1.2rem;
@@ -234,6 +238,7 @@ body, h1, p {
     transition: all 0.3s ease-in-out;
 }
 
+/* Video Container Styling */
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
@@ -259,3 +264,7 @@ body, h1, p {
     box-sizing: border-box;
 }
 
+/* Sticky Footer Fix */
+.main-content {
+    flex-grow: 1; /* Ensures content area fills the available space */
+}
