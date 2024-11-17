@@ -1,23 +1,34 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Dancing+Script:wght@700&family=Georgia&display=swap');
 body {
-    font-family: 'Georgia', serif; /* Elegant serif font */
+    font-family: 'Georgia', serif;
     background-color: #f8f8f8;
     color: #333;
     line-height: 1.6;
     text-align: center;
-
-    /* Set the background image */
-    background-image: url('images/background.jpg'); /* Change this to the correct path of your image */
-    background-size: cover; /* Ensure the image covers the whole page */
-    background-position: center center; /* Center the image */
-    background-attachment: fixed; /* Keep the background fixed during scroll */
-    min-height: 100vh; /* Make sure the body covers the full viewport height */
-
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-position: center center; /* Default center alignment for large screens */
+    background-attachment: fixed;
+    min-height: 100vh;
     position: relative;
 }
 
-/* Adding a semi-transparent white overlay to make the image subtle */
+/* For tablet and mobile devices (max-width: 768px) */
+@media (max-width: 768px) {
+    body {
+        background-position: left center; /* Align the background to the left on smaller screens */
+    }
+}
+
+/* For very small devices (portrait phones) */
+@media (max-width: 480px) {
+    body {
+        background-position: left top; /* Align the background to the left and top for very small devices */
+    }
+}
+
+/* Adding a semi-transparent white overlay */
 body::before {
     content: '';
     position: absolute;
@@ -243,3 +254,4 @@ body, h1, p {
     padding: 0;
     box-sizing: border-box;
 }
+
