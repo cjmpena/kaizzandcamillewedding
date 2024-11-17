@@ -19,7 +19,7 @@ h2, h6{
 
 @media (max-width: 768px) {
     body {
-        background-position: 60% center; /* Slightly shift the background to the left */
+        background-position: 70% center; /* Slightly shift the background to the left */
         background-size: cover; /* Ensure the background image covers the entire screen */
     }
 }
