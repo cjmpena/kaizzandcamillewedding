@@ -260,8 +260,10 @@ body::before {
     font-family: 'Cinzel', serif;
     font-size: 1.4rem;
     font-weight: bold;
-    color: rgb(79, 68, 60);
-    margin-top: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: rgb(74, 64, 57);
 }
 
 
