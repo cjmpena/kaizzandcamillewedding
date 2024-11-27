@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const correctPin = "sulitwedding2025";
+    const correctPin = "2025";
 
     // Check if the PIN has already been verified
     const isVerified = localStorage.getItem("pinVerified");
