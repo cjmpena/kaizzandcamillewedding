@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let partyList = [];
 
   try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbwKfHOFh6RoOgZnThuL0fFOcz1duqSsvRm7AsxrHLQJU72FQlGQ77fQ4Jyqi3BgUeY/exec");
+      const response = await fetch("https://script.google.com/macros/s/AKfycbynvEBOSdOaXFAQW35SxjxOWPAXPErkJboM4UZ7xCQ_kpuXPUupGfq23aa9xtdqQAWu/exec");
       const data = await response.json();
       partyList = data.filter((item) => item.partyName.trim() !== "");
   } catch (error) {
@@ -47,101 +47,134 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function showGuestForm(party) {
-      guestFormContainer.innerHTML = "";
+    guestFormContainer.innerHTML = "";
 
-      const existingGuests = party.existingGuests || [];
-      const guestLimit = party.guestLimit || 2;
-      const guestForm = document.createElement("form");
+    const existingGuests = party.existingGuests || [];
+    const existingGuestsStatus = party.existingGuestsStatus || {};
+    const foodChoices = party.foodChoices || {};
+    const guestLimit = parseInt(party.guestLimit) || 2;
+    const guestForm = document.createElement("form");
 
-      for (let i = 1; i <= guestLimit; i++) {
-          const guestWrapper = document.createElement("div");
-          guestWrapper.classList.add("guest-entry");
+    for (let i = 1; i <= guestLimit; i++) {
+        const guestWrapper = document.createElement("div");
+        guestWrapper.classList.add("guest-entry");
 
-          const guestNameLabel = document.createElement("label");
-          guestNameLabel.textContent = `Guest Name ${i}:`;
+        const guestNameLabel = document.createElement("label");
+        guestNameLabel.textContent = `Guest Name ${i}:`;
 
-          const dropdown = document.createElement("select");
-          dropdown.name = `guestName${i}`;
-          dropdown.innerHTML = "<option value=''>Select an existing guest</option>";
+        const dropdown = document.createElement("select");
+        dropdown.name = `guestName${i}`;
+        dropdown.innerHTML = "<option value=''>Select an existing guest</option>";
 
-          const guestNameInput = document.createElement("input");
-          guestNameInput.type = "text";
-          guestNameInput.name = `guestName${i}_input`;
-          guestNameInput.placeholder = "Type a new guest name";
+        const guestNameInput = document.createElement("input");
+        guestNameInput.type = "text";
+        guestNameInput.name = `guestName${i}_input`;
+        guestNameInput.placeholder = "Type a new guest name";
 
-          if (existingGuests[i - 1]) {
-              // Guest assigned, show dropdown only
-              const option = document.createElement("option");
-              option.value = existingGuests[i - 1];
-              option.textContent = existingGuests[i - 1];
-              option.selected = true;
-              dropdown.appendChild(option);
-              guestNameInput.style.display = "none";
-          } else {
-              // No guest assigned, show text input only
-              dropdown.style.display = "none";
-          }
+        // Find existing guest name if available
+        let assignedGuest = existingGuests[i - 1] || "";
+        if (assignedGuest) {
+            const option = document.createElement("option");
+            option.value = assignedGuest;
+            option.textContent = assignedGuest;
+            option.selected = true;
+            dropdown.appendChild(option);
 
-          const allergiesLabel = document.createElement("label");
-          allergiesLabel.textContent = `Allergies for Guest ${i}:`;
-          const allergiesInput = document.createElement("input");
-          allergiesInput.type = "text";
-          allergiesInput.name = `notes${i}`;
+            dropdown.style.display = "inline-block"; // Show dropdown
+            guestNameInput.style.display = "none"; // Hide text input
+        } else {
+            dropdown.style.display = "none"; // Hide dropdown if no existing guest
+            guestNameInput.style.display = "inline-block"; // Show text input
+        }
 
-          guestWrapper.appendChild(guestNameLabel);
-          guestWrapper.appendChild(dropdown);
-          guestWrapper.appendChild(guestNameInput);
-          guestWrapper.appendChild(allergiesLabel);
-          guestWrapper.appendChild(allergiesInput);
+        // ** Food choice dropdown **
+        const foodChoiceLabel = document.createElement("label");
+        foodChoiceLabel.textContent = `Food Choice for Guest ${i}:`;
 
-          guestForm.appendChild(guestWrapper);
-      }
+        const foodChoiceSelect = document.createElement("select");
+        foodChoiceSelect.name = `foodChoice${i}`;
+        foodChoiceSelect.innerHTML = `
+            <option value="">Select a food option</option>
+            <option value="Beef">Beef</option>
+            <option value="Fish">Fish</option>
+            <option value="Chicken">Chicken</option>
+            <option value="Vegan">Vegan</option>
+        `;
 
-      const submitButton = document.createElement("button");
-      submitButton.type = "submit";
-      submitButton.textContent = "Submit RSVP";
-      guestForm.appendChild(submitButton);
+        // Pre-fill food choice if available
+        if (assignedGuest && foodChoices[assignedGuest]) {
+            foodChoiceSelect.value = foodChoices[assignedGuest];
+        }
 
-      guestForm.addEventListener("submit", async (event) => {
-          event.preventDefault();
+        // ** Allergies input **
+        const allergiesLabel = document.createElement("label");
+        allergiesLabel.textContent = `Allergies for Guest ${i}:`;
+        const allergiesInput = document.createElement("input");
+        allergiesInput.type = "text";
+        allergiesInput.name = `notes${i}`;
 
-          const guestNames = [];
-          const notes = [];
+        // ** Append elements **
+        guestWrapper.appendChild(guestNameLabel);
+        guestWrapper.appendChild(dropdown);
+        guestWrapper.appendChild(guestNameInput);
+        guestWrapper.appendChild(foodChoiceLabel);
+        guestWrapper.appendChild(foodChoiceSelect);
+        guestWrapper.appendChild(allergiesLabel);
+        guestWrapper.appendChild(allergiesInput);
 
-          for (let i = 1; i <= guestLimit; i++) {
-              const selectedGuest = event.target[`guestName${i}`]?.value || "";
-              const newGuest = event.target[`guestName${i}_input`]?.value || "";
-              guestNames.push(selectedGuest || newGuest);
-              notes.push(event.target[`notes${i}`].value);
-          }
+        guestForm.appendChild(guestWrapper);
+    }
 
-          const formData = new FormData();
-          formData.append("partyName", party.partyName);
-          formData.append("guestLimit", guestLimit);
+    const submitButton = document.createElement("button");
+    submitButton.type = "submit";
+    submitButton.textContent = "Submit RSVP";
+    guestForm.appendChild(submitButton);
 
-          for (let i = 1; i <= guestLimit; i++) {
-              formData.append(`guestName${i}`, guestNames[i - 1] || '');
-              formData.append(`notes${i}`, notes[i - 1] || '');
-          }
+    guestForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
 
-          try {
-              const response = await fetch("https://script.google.com/macros/s/AKfycbwKfHOFh6RoOgZnThuL0fFOcz1duqSsvRm7AsxrHLQJU72FQlGQ77fQ4Jyqi3BgUeY/exec", {
-                  method: "POST",
-                  body: formData
-              });
+        const guestNames = [];
+        const notes = [];
+        const foodChoices = [];
 
-              const result = await response.text();
-              console.log(result);
+        for (let i = 1; i <= guestLimit; i++) {
+            const selectedGuest = event.target[`guestName${i}`]?.value || "";
+            const newGuest = event.target[`guestName${i}_input`]?.value || "";
+            guestNames.push(selectedGuest || newGuest);
+            notes.push(event.target[`notes${i}`].value);
+            foodChoices.push(event.target[`foodChoice${i}`].value);
+        }
 
-              guestForm.reset();
-              alert("RSVP submitted successfully!");
+        const formData = new FormData();
+        formData.append("partyName", party.partyName);
+        formData.append("guestLimit", guestLimit);
 
-          } catch (error) {
-              console.error("Error submitting RSVP:", error);
-              alert("There was an error submitting your RSVP. Please try again.");
-          }
-      });
+        for (let i = 1; i <= guestLimit; i++) {
+            formData.append(`guestName${i}`, guestNames[i - 1] || '');
+            formData.append(`notes${i}`, notes[i - 1] || '');
+            formData.append(`foodChoice${i}`, foodChoices[i - 1] || '');
+        }
 
-      guestFormContainer.appendChild(guestForm);
-  }
+        try {
+            const response = await fetch("https://script.google.com/macros/s/AKfycbynvEBOSdOaXFAQW35SxjxOWPAXPErkJboM4UZ7xCQ_kpuXPUupGfq23aa9xtdqQAWu/exec", {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.text();
+            console.log(result);
+
+            guestForm.reset();
+            alert("RSVP submitted successfully!");
+
+        } catch (error) {
+            console.error("Error submitting RSVP:", error);
+            alert("There was an error submitting your RSVP. Please try again.");
+        }
+    });
+
+    guestFormContainer.appendChild(guestForm);
+}
+
+
 });
