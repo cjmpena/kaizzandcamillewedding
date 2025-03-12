@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const timeRemaining = weddingDate - currentTime;
 
         if (timeRemaining <= 0) {
-            countdownMessage.innerHTML = "It's Here!";
-            countdown.innerHTML = "Were getting married!";
+            countdownMessage.innerHTML = "Were getting married!";
+            countdown.innerHTML = "Let's Party!";
             clearInterval(interval); 
             return;
         }
