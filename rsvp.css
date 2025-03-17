@@ -1,0 +1,869 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Dancing+Script:wght@700&family=Georgia&display=swap');
+/* Add these styles to your existing CSS file */
+
+/* Enhanced Form Fields */
+.rsvp-form input[type="text"],
+.rsvp-form input[type="email"],
+.rsvp-form select,
+#partyNameInput {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 2px solid rgba(72, 60, 50, 0.3);
+    border-radius: 5px;
+    font-family: 'Georgia', serif;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.rsvp-form input[type="text"]:focus,
+.rsvp-form input[type="email"]:focus,
+.rsvp-form select:focus,
+#partyNameInput:focus {
+    outline: none;
+    border-color: rgb(108, 133, 80);
+    box-shadow: 0 0 8px rgba(108, 133, 80, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Stylish Radio Buttons */
+.attending-options {
+    display: flex;
+    gap: 30px; /* Increased from 20px for more space between options */
+    margin: 20px 0; /* Added more vertical space above and below radio groups */
+}
+
+.radio-option label {
+    padding: 8px 18px; /* Slightly reduced padding to make buttons less massive */
+    min-width: 80px; /* Reduced from 100px to make buttons less wide */
+    font-size: 0.95rem; /* Slightly smaller font size */
+}
+
+.radio-option input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.radio-option label {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid rgba(72, 60, 50, 0.5);
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: rgb(72, 60, 50);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 100px;
+}
+
+.radio-option input[type="radio"]:checked + label {
+    background-color: rgb(72, 60, 50);
+    color: white;
+    border-color: rgb(72, 60, 50);
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.radio-option:hover label {
+    background-color: rgba(108, 133, 80, 0.2);
+}
+
+/* Enhanced Select Dropdown */
+.rsvp-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23483C32%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+    padding-right: 40px;
+}
+
+/* Improved Buttons */
+/* Direct and specific styling for the submit button */
+#guestFormContainer button[type="submit"],
+.rsvp-form button[type="submit"],
+form button[type="submit"] {
+    background: linear-gradient(to bottom, rgb(72, 60, 50), rgb(60, 50, 40));
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 25px;
+    display: inline-block;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    text-transform: uppercase;
+    width: auto;
+}
+
+#guestFormContainer button[type="submit"]:hover,
+.rsvp-form button[type="submit"]:hover,
+form button[type="submit"]:hover {
+    background: linear-gradient(to bottom, rgb(108, 133, 80), rgb(90, 115, 65));
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+#guestFormContainer button[type="submit"]:active,
+.rsvp-form button[type="submit"]:active,
+form button[type="submit"]:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Force override any Bootstrap or other framework styles */
+#guestFormContainer button[type="submit"],
+.rsvp-form button[type="submit"],
+form button[type="submit"] {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-color: rgb(72, 60, 50) !important;
+    background-image: linear-gradient(to bottom, rgb(72, 60, 50), rgb(60, 50, 40)) !important;
+}
+
+/* Replace your current #submitRSVP specific styling with this */
+
+/* Center the submit button for better visual appeal */
+#guestFormContainer form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Add some breathing room around the button */
+#guestFormContainer button[type="submit"] {
+    margin: 40px 0 20px 0;
+    min-width: 200px;
+}
+
+/* Improved Suggestions Box */
+#suggestionsBox {
+    margin-top: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion {
+    padding: 12px 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(72, 60, 50, 0.2);
+    margin-bottom: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+    transition: all 0.3s ease;
+}
+
+.suggestion:hover {
+    background-color: rgba(108, 133, 80, 0.3);
+    transform: translateX(5px);
+}
+
+/* Loading Animation */
+.loading {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: rgb(72, 60, 50);
+    position: relative;
+    padding-left: 20px;
+}
+
+.loading:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 15px;
+    height: 15px;
+    margin-top: -7px;
+    border: 2px solid rgb(72, 60, 50);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error Message Styling */
+.no-match, .error {
+    padding: 12px 15px;
+    background-color: rgba(255, 220, 220, 0.9);
+    border-left: 4px solid rgb(150, 0, 0);
+    color: rgb(150, 0, 0);
+    border-radius: 5px;
+    margin-top: 15px;
+    font-family: 'Georgia', serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Improved spacing for email field and message sections */
+#emailFieldWrapper {
+    margin-bottom: 35px;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    border: 1px solid rgba(72, 60, 50, 0.2);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    width: 100%;
+}
+
+.message-wrapper {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    border: 1px solid rgba(72, 60, 50, 0.2);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.message-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: rgba(108, 133, 80, 0.4);
+}
+
+/* Improved textarea styling for message to couple */
+#coupleMessage {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid rgba(72, 60, 50, 0.3);
+    border-radius: 8px;
+    font-family: 'Georgia', serif;
+    background-color: rgba(255, 255, 255, 0.9);
+    resize: vertical;
+    min-height: 120px;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+#coupleMessage:focus {
+    outline: none;
+    border-color: rgb(108, 133, 80);
+    box-shadow: 0 0 8px rgba(108, 133, 80, 0.6);
+}
+
+/* Better form container spacing */
+#guestFormContainer {
+    margin-top: 40px;
+}
+
+#guestFormContainer form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Improved spacing around submit button */
+.rsvp-form button[type="submit"] {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* Ensure consistent padding in guest entries */
+.guest-entry label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Create section dividers */
+.form-section-divider {
+    width: 100%;
+    border: none;
+    height: 1px;
+    background: rgba(72, 60, 50, 0.2);
+    margin: 30px 0;
+}
+
+/* Improved responsive behavior */
+@media (max-width: 768px) {
+    #emailFieldWrapper,
+    .message-wrapper {
+        padding: 20px;
+    }
+    
+    .rsvp-form button[type="submit"] {
+        width: 100%;
+        margin-top: 30px;
+    }
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Flexbox layout */
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+    background-image: url('images/rsvp.jpg');
+    background-size: cover;
+    background-position: center center; /* Default center alignment for large screens */
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Fixed overlay - updated from absolute to fixed positioning */
+body::before {
+    content: '';
+    position: fixed; /* Changed from absolute to fixed so it covers the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6); /* White overlay with 60% opacity */
+    z-index: -1; /* Keep the overlay behind other content */
+}
+
+/* For tablet and mobile devices (max-width: 768px) */
+@media (max-width: 768px) {
+    body {
+        background-position: left center; /* Align the background to the left on smaller screens */
+    }
+}
+
+/* For very small devices (portrait phones) */
+@media (max-width: 480px) {
+    body {
+        background-position: left; /* Align the background to the left and top for very small devices */
+    }
+}
+
+/* Hide content and show overlay by default */
+body.overlay-active * {
+    visibility: hidden; /* Hide all content */
+}
+
+body.overlay-active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    z-index: 9998; /* Place above other content */
+}
+
+body.overlay-active #verification-overlay {
+    visibility: visible; /* Show the overlay */
+    z-index: 9999; /* Ensure the overlay is above everything else */
+}
+
+/* To make content blur before verification */
+body.overlay-active {
+    filter: blur(5px); /* Blur the content behind the overlay */
+}
+
+/* Style for the overlay */
+#verification-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* White background with some opacity */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+    color: #333;
+    z-index: 9999;
+}
+
+/* Navigation Bar Styling */
+.navbar {
+    background-color: rgb(72, 60, 50, 0.9);
+    padding: 15px 0;
+    color: rgb(201, 194, 189);
+}
+
+.navbar-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: #f8f8f8;
+}
+
+.navbar-brand:hover {
+    color: rgb(201, 194, 189); /* Hover color */
+}
+
+.navbar-nav .nav-link {
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    color: #f8f8f8;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgb(201, 194, 189);
+}
+
+/* Footer Navbar */
+.footer-navbar {
+    background-color: rgb(72, 60, 50, 0.9);
+    padding: 30px 0;
+    color: #f8f8f8;
+    text-align: center;
+    margin-top: auto; /* Pushes footer to the bottom of the page */
+    width: 100%;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer-navbar .footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-navbar .nav-item {
+    margin: 0 15px;
+}
+
+.footer-navbar .nav-link {
+    text-decoration: none;
+    color: #f8f8f8;;
+    font-size: 1.1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-navbar .nav-link:hover {
+    color: rgb(201, 194, 189); /* Same hover color as your navbar */
+}
+
+.footer-navbar .footer-text {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: rgb(201, 194, 189);
+}
+
+.footer-credit {
+    font-size: 0.5rem;
+    color: rgb(201, 194, 189);
+    margin-top: 15px;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Countdown Timer Styling */
+.countdown-container {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.countdown-box {
+    display: inline-block;
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+    padding: 20px 40px;
+    color: white;
+    background-color: rgba(108, 133, 80, 0.8); /* Soft green with opacity */
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.countdown-box:hover {
+    background-color: rgba(108, 133, 80, 1); /* Solid green on hover */
+}
+
+/* FAQ Section Styling */
+.faq-section {
+    flex-grow: 1; /* Allows the FAQ section to grow and fill available space */
+}
+
+.faq-section .accordion-item {
+    border: none; /* Remove the border around each accordion item */
+    background-color: rgba(108, 133, 80, 0.2); /* Light sage green background for each item */
+    margin-bottom: 10px; /* Space between items */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.faq-section .accordion-button {
+    background-color: rgba(108, 133, 80, 0.6); /* Slightly darker green for button */
+    color: #333; /* Text color */
+    font-weight: bold;
+    font-family: 'Georgia', serif; /* Apply Georgia font to the button */
+    border: none; /* Remove border from button */
+}
+
+.faq-section .accordion-button:focus {
+    box-shadow: none; /* Remove focus outline */
+}
+
+.faq-section .accordion-body {
+    background-color: rgba(108, 133, 80, 0.4); /* Light green for the content */
+    color: #333; /* Text color */
+    padding: 15px 20px;
+    font-family: 'Georgia', serif; /* Apply Georgia font to the content */
+    border-radius: 5px; /* Rounded corners for the content */
+}
+
+/* Wedding Header Styling */
+.wedding-header {
+    background: rgba(108, 133, 80, 0.6);
+    color: rgb(72, 60, 50);
+    padding: 50px 20px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.wedding-header h5 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: rgb(106, 92, 81);
+}
+
+.wedding-header h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: rgb(72, 60, 50);
+}
+
+.wedding-header .subheading {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: rgb(106, 92, 81);
+    margin-top: 10px;
+}
+
+/* Content Paragraph Styling */
+.content p {
+    font-family: 'Georgia', serif;
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #5f5f5f;
+}
+
+.content p:hover {
+    color: #6a4f4b;
+}
+
+body, h1, p {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Video Container Styling */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #f8f8f8;
+    margin-top: 40px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Sticky Footer Fix */
+.main-content {
+    flex-grow: 1; /* Ensures content area fills the available space */
+}
+
+/* RSVP Container Styles */
+.rsvp-container {
+    background: rgba(108, 133, 80, 0.6);
+    border-radius: 10px;
+    padding: 30px;
+    margin: 40px auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    color: rgb(72, 60, 50);
+}
+
+.rsvp-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.rsvp-header h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    color: rgb(72, 60, 50);
+}
+
+.rsvp-header p {
+    font-family: 'Georgia', serif;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.rsvp-form {
+    margin-top: 20px;
+}
+
+.rsvp-form label {
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: rgb(72, 60, 50);
+    font-weight: bold;
+}
+
+.rsvp-form input[type="text"],
+.rsvp-form-input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 2px solid rgba(72, 60, 50, 0.3);
+    border-radius: 5px;
+    font-family: 'Georgia', serif;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.rsvp-form input[type="email"],
+.rsvp-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(72, 60, 50, 0.3);
+    border-radius: 5px;
+    font-family: 'Georgia', serif;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.rsvp-form input[type="text"]:focus,
+.rsvp-form input[type="email"]:focus,
+.rsvp-form select:focus {
+    outline: none;
+    border-color: rgb(72, 60, 50);
+    box-shadow: 0 0 5px rgba(72, 60, 50, 0.5);
+}
+
+#searchButton, 
+.rsvp-form button {
+    background-color: rgb(72, 60, 50);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+#searchButton:hover, 
+.rsvp-form button:hover {
+    background-color: rgba(72, 60, 50, 0.8);
+}
+
+#submitRSVP {
+    background-color: rgb(72, 60, 50) !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 20px !important;
+    font-family: 'Georgia', serif !important;
+    font-size: 1.1rem !important;
+    font-weight: normal !important; /* Set to normal instead of bold */
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease !important;
+    margin-top: 10px !important;
+    display: inline-block !important;
+    text-transform: none !important; /* Remove uppercase transformation */
+    letter-spacing: normal !important; /* Reset letter spacing */
+}
+
+#submitRSVP:hover {
+    background-color: rgba(72, 60, 50, 0.8) !important;
+}
+
+#suggestionsBox {
+    margin-top: 15px;
+}
+
+.suggestion {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(72, 60, 50, 0.3);
+    margin-bottom: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+    transition: background-color 0.3s ease;
+}
+
+.suggestion:hover {
+    background-color: rgba(108, 133, 80, 0.4);
+}
+
+.no-match, .error {
+    padding: 10px;
+    background-color: rgba(255, 220, 220, 0.8);
+    border: 1px solid rgba(200, 0, 0, 0.3);
+    color: rgb(150, 0, 0);
+    border-radius: 5px;
+    margin-top: 10px;
+    font-family: 'Georgia', serif;
+}
+
+.guest-entry {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(72, 60, 50, 0.2);
+}
+
+.attending-options {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+}
+
+.radio-option input[type="radio"] {
+    margin-right: 8px;
+}
+
+.loading {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: rgb(72, 60, 50);
+}
+
+/* Responsive fixes for conditionally shown elements */
+@media (max-width: 768px) {
+    /* Make labels wrap properly */
+    .guest-entry label {
+        display: block;
+        width: 100%;
+        word-wrap: break-word;
+    }
+    
+    /* Make sure radio buttons layout properly on small screens */
+    .attending-options {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        width: 100%;
+    }
+    
+    /* Ensure content doesn't overflow its container */
+    #guestFormContainer {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    /* Make sure all elements in the guest entry adjust properly */
+    .guest-entry > * {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Extra small device fixes */
+@media (max-width: 480px) {
+    .attending-options {
+        gap: 10px; /* Reduce gap on very small screens */
+    }
+    
+    .radio-option label {
+        min-width: 60px; /* Make buttons smaller */
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    
+    /* Even more compact padding for tiny screens */
+    .guest-entry {
+        padding: 12px;
+    }
+}
+
+/* Fix for any overflowing content regardless of visibility state */
+.guest-entry label,
+.guest-entry input,
+.guest-entry select,
+.guest-entry .attending-options {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .rsvp-container {
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    .rsvp-header h1 {
+        font-size: 2.8rem;
+    }
+}

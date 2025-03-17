@@ -55,7 +55,7 @@ body {
     color: #333;
     line-height: 1.6;
     text-align: center;
-    background-image: url('images/background.jpg');
+    background-image: url('images/faq.jpg');
     background-size: cover;
     background-position: center center; /* Default center alignment for large screens */
     background-attachment: fixed;
@@ -116,6 +116,33 @@ body::before {
 
 .navbar-nav .nav-link:hover {
     color: rgb(201, 194, 189);
+}
+
+.venue-link {
+    color: rgb(72, 60, 50, 0.9); /* A muted color that works well with most wedding themes */
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.venue-link:hover {
+    color: rgb(201, 194, 189); /* Slightly darker on hover */
+}
+
+.venue-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(72, 60, 50, 0.9);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.venue-link:hover::after {
+    transform: scaleX(1);
 }
 
 /* Footer Navbar */
