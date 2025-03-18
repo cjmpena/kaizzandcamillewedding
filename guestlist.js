@@ -112,7 +112,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             guestWrapper.appendChild(guestHeader);
     
             const guestNameLabel = document.createElement("label");
-            guestNameLabel.textContent = `Guest Name:`;
             guestNameLabel.htmlFor = `guestName${i}`;
             guestNameLabel.className = "form-label";
     
