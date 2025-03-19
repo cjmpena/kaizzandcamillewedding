@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let partyList = [];
   
     try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycby-TahSxElSvTClqMa8L9N3rbsombqEKRw3lWVPhNf-_Z1cmVqkoOnoddunzLnZpQKEAg/exec");
+        const response = await fetch("https://script.google.com/macros/s/AKfycbxm-qGDWfZ0ae-XqALDcPu0-Bw4EuGkYM6msBd_WUVKDIYKfcFw4AKubnP5J4vy2p_8eg/exec");
         const data = await response.json();
         partyList = data.filter((item) => item.partyName.trim() !== "");
     } catch (error) {
@@ -469,7 +469,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
     
             try {
-                const response = await fetch("https://script.google.com/macros/s/AKfycby-TahSxElSvTClqMa8L9N3rbsombqEKRw3lWVPhNf-_Z1cmVqkoOnoddunzLnZpQKEAg/exec", {
+                const response = await fetch("https://script.google.com/macros/s/AKfycbxm-qGDWfZ0ae-XqALDcPu0-Bw4EuGkYM6msBd_WUVKDIYKfcFw4AKubnP5J4vy2p_8eg/exec", {
                     method: "POST",
                     body: formData
                 });
