@@ -80,14 +80,15 @@ body {
 /* Adding a semi-transparent white overlay */
 body::before {
     content: '';
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.6); /* White overlay with 60% opacity */
-    z-index: -1; /* Keep the overlay behind other content */
+    background: rgba(255, 255, 255, 0.4); /* Reduce opacity from 0.6 to 0.4 */
+    z-index: -1;
 }
+
 
 /* Navigation Bar Styling */
 .navbar {
@@ -119,14 +120,14 @@ body::before {
 }
 
 .venue-link {
-    color: rgb(72, 60, 50, 0.9); /* A muted color that works well with most wedding themes */
+    color: rgba(94, 83, 73, 0.9);
     text-decoration: none;
     position: relative;
     transition: color 0.3s ease;
 }
 
 .venue-link:hover {
-    color: rgb(201, 194, 189); /* Slightly darker on hover */
+    color: rgb(201, 194, 189); 
 }
 
 .venue-link::after {
@@ -223,13 +224,15 @@ body::before {
 
 /* FAQ Section Styling */
 .faq-section {
+    padding-bottom: 40px;
     flex-grow: 1; /* Allows the FAQ section to grow and fill available space */
 }
 
 .faq-section .accordion-item {
+    overflow: visible;
     border: none; /* Remove the border around each accordion item */
     background-color: rgba(108, 133, 80, 0.2); /* Light sage green background for each item */
-    margin-bottom: 10px; /* Space between items */
+    margin-bottom: 15px; /* Space between items */
     border-radius: 5px; /* Rounded corners */
 }
 
@@ -246,11 +249,10 @@ body::before {
 }
 
 .faq-section .accordion-body {
-    background-color: rgba(108, 133, 80, 0.4); /* Light green for the content */
-    color: #333; /* Text color */
-    padding: 15px 20px;
-    font-family: 'Georgia', serif; /* Apply Georgia font to the content */
-    border-radius: 5px; /* Rounded corners for the content */
+    background-color: rgba(255, 255, 255, 0.5); /* Increase opacity for better readability */
+    color: #333;
+    padding: 20px;
+    border-radius: 0 0 5px 5px;
 }
 
 /* Wedding Header Styling */
@@ -335,4 +337,77 @@ body, h1, p {
 /* Sticky Footer Fix */
 .main-content {
     flex-grow: 1; /* Ensures content area fills the available space */
+}
+
+/* Add these styles to your stylefaq.css file */
+.palette-caption {
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
+/* Fix accordion body padding */
+.accordion-body {
+    padding: 15px;
+}
+
+/* Make sure the accordion expands properly */
+.accordion-collapse {
+    overflow: visible;
+    max-height: none;
+}
+
+/* Add these more restrictive styles to your stylefaq.css file */
+
+.color-palette-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+    padding: 0;
+}
+
+.color-palette {
+    width: auto; /* Let the image set its own width */
+    max-height: 200px; /* Restrict height instead of width */
+    object-fit: contain; /* Preserve aspect ratio */
+    margin: 0;
+}
+
+/* For smaller screens, make the image even smaller */
+@media (max-width: 768px) {
+    .color-palette {
+        max-width: 300px; /* Smaller on tablets/mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .color-palette {
+        max-width: 240px; /* Even smaller on phones */
+    }
+}
+
+/* Ensure the accordion has proper padding */
+.accordion-body {
+    background-color: rgba(255, 255, 255, 0.9); /* Nearly opaque white background just for the accordion content */
+    padding: 20px;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Make sure the accordion expands properly but doesn't get too large */
+.accordion-collapse {
+    transition: height 0.3s ease;
+}
+
+/* Adjust background position for mobile views */
+@media (max-width: 768px) {
+    body {
+        background-position: 70% center; /* Shifts background image to the right */
+    }
+}
+
+/* For very small devices */
+@media (max-width: 480px) {
+    body {
+        background-position: 60% center; /* Shifts background even further right on phones */
+    }
 }
