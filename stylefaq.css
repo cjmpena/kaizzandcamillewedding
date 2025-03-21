@@ -200,28 +200,6 @@ body::before {
     padding: 20px;
 }
 
-/* Countdown Timer Styling */
-.countdown-container {
-    text-align: center;
-    margin: 50px 0;
-}
-
-.countdown-box {
-    display: inline-block;
-    font-family: 'Georgia', serif;
-    font-size: 2rem;
-    padding: 20px 40px;
-    color: white;
-    background-color: rgba(108, 133, 80, 0.8); /* Soft green with opacity */
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.countdown-box:hover {
-    background-color: rgba(108, 133, 80, 1); /* Solid green on hover */
-}
-
 /* FAQ Section Styling */
 .faq-section {
     padding-bottom: 40px;
