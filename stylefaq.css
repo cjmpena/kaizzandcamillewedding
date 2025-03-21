@@ -46,27 +46,31 @@ body.overlay-active {
 html, body {
     height: 100%;
     margin: 0;
-    display: flex;
-    flex-direction: column; /* Flexbox layout */
+    padding: 0;
 }
 
-body {
-    font-family: 'Georgia', serif;
-    background-color: #f8f8f8;
-    color: #333;
-    line-height: 1.6;
-    text-align: center;
+.faq-background {
     background-image: url('images/faq.jpg');
     background-size: cover;
     background-position: center center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
+    width: 100%;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
+
+.faq-section .accordion-body {
+    font-family: 'Georgia', serif !important;
+}
+
 
 /* Adding a semi-transparent white overlay */
 body::before {
     content: '';
+    background: rgba(255, 255, 255, 0.4);
     position: fixed;
     top: 0;
     left: 0;
@@ -81,6 +85,8 @@ body::before {
     background-color: rgba(72, 60, 50, 0.9);
     padding: 15px 0;
     color: rgb(201, 194, 189);
+    position: relative;
+    z-index: 2;
 }
 
 .navbar-brand {
@@ -132,6 +138,16 @@ body::before {
     transform: scaleX(1);
 }
 
+/* Main Content Styling */
+.main-content {
+    flex: 1 0 auto; /* This makes it grow and take available space */
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 /* Footer Navbar */
 .footer-navbar {
     background-color: rgba(72, 60, 50, 0.9);
@@ -141,6 +157,9 @@ body::before {
     margin-top: auto; /* Pushes footer to the bottom of the page */
     width: 100%;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
 }
 
 .footer-navbar .footer-nav {
@@ -173,6 +192,13 @@ body::before {
     color: rgb(201, 194, 189);
 }
 
+.footer-text, 
+.footer-credit {
+    font-family: 'Georgia', serif !important;
+}
+
+
+
 .footer-credit {
     font-size: 0.5rem;
     color: rgb(201, 194, 189);
@@ -184,12 +210,15 @@ body::before {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    width: 100%;
 }
 
 /* FAQ Section Styling */
 .faq-section {
     padding-bottom: 40px;
     flex-grow: 1; /* Allows the FAQ section to grow and fill available space */
+    width: 100%;
+    position: relative;
 }
 
 /* Enhanced FAQ Accordion Styling */
@@ -202,14 +231,15 @@ body::before {
 
 .faq-section .accordion-item {
     margin-bottom: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.5); /* Reduced from 0.7 to 0.5 */
     border: none;
     border-radius: 8px;
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .faq-section .accordion-button {
-    background-color: rgba(108, 133, 80, 0.5);
+    background-color: rgba(108, 133, 80, 0.5); /* Reduced from 0.7 to 0.5 */
     color: #333;
     font-weight: 600;
     font-family: 'Georgia', serif;
@@ -220,33 +250,47 @@ body::before {
 }
 
 .faq-section .accordion-button:hover {
-    background-color: rgba(108, 133, 80, 0.7);
+    background-color: rgba(108, 133, 80, 0.7); /* Reduced from 0.85 to 0.7 */
 }
 
 .faq-section .accordion-button:not(.collapsed) {
-    background-color: rgba(108, 133, 80, 0.7);
+    background-color: rgba(108, 133, 80, 0.7); /* Reduced from 0.9 to 0.7 */
     color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Style the accordion arrow */
+/* Remove blue outline and customize arrow */
+.faq-section .accordion-button:focus {
+    box-shadow: none; /* Removes the blue outline */
+    outline: none; /* Additional outline removal */
+    border-color: transparent; /* Removes any border */
+}
+
+/* Change the color of the dropdown arrow */
 .faq-section .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23483c32'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
     background-size: 16px;
     transition: transform 0.3s ease;
     color: #333;
 }
 
+/* Make the arrow white when accordion is expanded */
 .faq-section .accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
     transform: rotate(-180deg);
-    filter: brightness(2); /* Make arrow white when expanded */
 }
 
 .faq-section .accordion-body {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.6); /* Reduced from 0.85 to 0.6 */
     color: #333;
     padding: 20px 24px;
     border-top: 1px solid rgba(108, 133, 80, 0.3);
     line-height: 1.8;
+}
+
+/* Improve transition of accordion */
+.faq-section .accordion-collapse {
+    transition: height 0.3s ease-out;
 }
 
 /* Make the entire button clickable area more obvious */
@@ -269,25 +313,6 @@ body::before {
 
 .faq-section .accordion-header:hover::before {
     opacity: 1;
-}
-
-
-.faq-section .accordion-button:focus {
-    box-shadow: none; 
-    outline: none;
-    border-color: transparent; 
-}
-
-
-.faq-section .accordion-button::after {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23483c32'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
- 
-}
-
-
-.faq-section .accordion-button:not(.collapsed)::after {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
-   
 }
 
 /* Section heading improvement */
@@ -321,6 +346,8 @@ body::before {
     border-radius: 10px;
     margin-bottom: 40px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
 }
 
 .wedding-header h5 {
@@ -366,36 +393,11 @@ body, h1, p {
     transition: all 0.3s ease-in-out;
 }
 
-/* Video Container Styling */
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    background: #f8f8f8;
-    margin-top: 40px;
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
 /* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-/* Main Content Styling */
-.main-content {
-    flex-grow: 1;
-    min-height: 70vh; /* Ensure minimum height */
 }
 
 /* Palette Caption Styling */
@@ -430,11 +432,11 @@ body, h1, p {
 @media (max-width: 768px) {
     body {
         background-position: 30% center !important;
-        background-attachment: scroll !important; /* Better for mobile */
+        background-attachment: scroll !important; 
     }
     
     body::before {
-        background: rgba(255, 255, 255, 0.6); /* Increase overlay opacity on mobile */
+        background: rgba(255, 255, 255, 0.6);
     }
     
     .wedding-header h1 {
@@ -452,7 +454,24 @@ body, h1, p {
     .section-title {
         font-size: 2.2rem;
     }
+
+    .navbar-collapse {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center align links */
+        text-align: center;
+    }
+
+    .navbar-nav {
+        width: 100%; /* Ensure full width */
+    }
+
+    .navbar-nav .nav-item {
+        width: 100%;
+        text-align: center; /* Center text inside */
+    }
 }
+
 
 @media (max-width: 480px) {
     body {
