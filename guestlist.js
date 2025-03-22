@@ -64,17 +64,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         const existingGuests = party.existingGuests || [];
         const foodChoices = party.foodChoices || {};
         const attendingStatus = party.attendingStatus || {};
-        // Support up to 7 guests, defaulting to 2 if not specified
         const guestLimit = parseInt(party.guestLimit) || 2;
         const guestForm = document.createElement("form");
         
-        // Add a heading showing total number of guests for this party
         const partyHeading = document.createElement("h3");
         partyHeading.textContent = `RSVP for ${party.partyName} (${guestLimit} ${guestLimit === 1 ? 'guest' : 'guests'})`;
         partyHeading.className = "party-heading";
         guestForm.appendChild(partyHeading);
         
-        // Create a wrapper for email field that can be hidden/shown
         const emailFieldWrapper = document.createElement("div");
         emailFieldWrapper.id = "emailFieldWrapper";
         emailFieldWrapper.className = "form-field";
@@ -94,18 +91,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         emailFieldWrapper.appendChild(emailLabel);
         emailFieldWrapper.appendChild(emailInput);
     
-        // Array to track attendance radio buttons
+
         const attendanceRadios = [];
-        
-        // Create a container for all guest entries
+
         const allGuestsContainer = document.createElement("div");
         allGuestsContainer.className = "all-guests-container";
     
         for (let i = 1; i <= guestLimit; i++) {
             const guestWrapper = document.createElement("div");
             guestWrapper.classList.add("guest-entry");
-            
-            // Add a heading for each guest
+   
             const guestHeader = document.createElement("h4");
             guestHeader.textContent = `Guest ${i}`;
             guestHeader.className = "guest-header";
@@ -178,7 +173,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             attendingWrapper.appendChild(yesWrapper);
             attendingWrapper.appendChild(noWrapper);
     
-            // Store references to radio buttons to check attendance status later
             attendanceRadios.push({ yes: yesInput, no: noInput });
     
             const foodChoiceLabel = document.createElement("label");
@@ -186,7 +180,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             foodChoiceLabel.htmlFor = `foodChoice${i}`;
             foodChoiceLabel.className = "form-label food-choice-label";
     
-            // Create custom dropdown for food choice
+         
             const foodChoiceWrapper = document.createElement("div");
             foodChoiceWrapper.className = "custom-select-wrapper";
 
@@ -439,27 +433,25 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return;
             }
             
-            // Check if attending guests have selected a food choice
             const missingFoodChoices = attendingChoices.some((choice, index) => 
                 choice === "Yes" && !foodChoices[index]
             );
-            
+
             if (missingFoodChoices) {
-                alert("Please select a food choice for all attending guests.");
+                showErrorPopup("Please select a food choice for all attending guests.");
                 loadingIndicator.remove();
                 submitButton.disabled = false;
                 return;
             }
             
-            // Get the message for the couple
             const coupleMessage = messageTextarea.value.trim();
     
             const formData = new FormData();
             formData.append("partyName", party.partyName);
             formData.append("guestLimit", guestLimit);
             formData.append("email", email);
-            formData.append("allNotAttending", allNotAttending); // Flag for backend
-            formData.append("coupleMessage", coupleMessage); // Add the message to the form data
+            formData.append("allNotAttending", allNotAttending); 
+            formData.append("coupleMessage", coupleMessage); 
     
             for (let i = 1; i <= guestLimit; i++) {
                 formData.append(`guestName${i}`, guestNames[i - 1] || "");
@@ -479,18 +471,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                 guestForm.reset();
                 loadingIndicator.remove();
                 
-                // Different success message based on attendance
                 if (allNotAttending) {
-                    alert("Thank you for submitting your RSVP. We're sorry you won't be able to attend our special day.");
+                    showThankYouPopup(false);
                 } else {
-                    alert("RSVP submitted successfully! Confirmation email sent. If not appearing in inbox, please check junk/spam.");
-                }
-
-                window.location.href = "index.html";
-                
-                    // Reset form and UI
-                    guestFormContainer.innerHTML = "";
-                    partyNameInput.value = "";
+                    showThankYouPopup(true);
+                }                
+                 
                 } catch (error) {
                     console.error("Error submitting RSVP:", error);
                     loadingIndicator.remove();
@@ -500,4 +486,69 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
         guestFormContainer.appendChild(guestForm);
     }
+
+    function showErrorPopup(message) {
+        const overlay = document.createElement("div");
+        overlay.className = "error-overlay";
+        
+        const popup = document.createElement("div");
+        popup.className = "error-popup";
+        
+        popup.innerHTML = `
+            <h2>Attention Required</h2>
+            <p>${message}</p>
+        `;
+        
+        const closeButton = document.createElement("button");
+        closeButton.className = "error-button";
+        closeButton.textContent = "OK";
+        closeButton.addEventListener("click", () => {
+            document.body.removeChild(overlay);
+        });
+        
+        popup.appendChild(closeButton);
+        overlay.appendChild(popup);
+        document.body.appendChild(overlay);
+    }
+
+    function showThankYouPopup(isAttending) {
+        const overlay = document.createElement("div");
+        overlay.className = "thank-you-overlay";
+        
+        const popup = document.createElement("div");
+        popup.className = "thank-you-popup";
+        
+        let message = '';
+        if (isAttending) {
+            message = `
+                <h2>Thank You!</h2>
+                <p>Your RSVP has been submitted successfully.</p>
+                <p>A confirmation email has been sent to your inbox.</p>
+                <p class="small-note">(Please check your spam/junk folder if not appearing)</p>
+                <p class="message-highlight">We look forward to celebrating with you!</p>
+            `;
+        } else {
+            message = `
+                <h2>Thank You</h2>
+                <p>Your RSVP has been submitted successfully.</p>
+                <p>We're sorry you won't be able to attend our special day.</p>
+                <p class="message-highlight">Thank you for letting us know.</p>
+            `;
+        }
+        
+        popup.innerHTML = message;
+        
+        const closeButton = document.createElement("button");
+        closeButton.className = "thank-you-button";
+        closeButton.textContent = "Close";
+        closeButton.addEventListener("click", () => {
+            document.body.removeChild(overlay);
+            window.location.href = "index.html";
+        });
+        
+        popup.appendChild(closeButton);
+        overlay.appendChild(popup);
+        document.body.appendChild(overlay);
+    }
+
 });
