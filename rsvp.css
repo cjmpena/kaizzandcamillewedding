@@ -434,9 +434,9 @@ body::before {
 }
 
 
-body.overlay-active * {
+/* body.overlay-active * {
     visibility: hidden; 
-}
+} */
 
 body.overlay-active::before {
     content: '';
@@ -445,7 +445,7 @@ body.overlay-active::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.8); 
+    background: transparent; 
     z-index: 9998; 
 }
 
@@ -455,9 +455,9 @@ body.overlay-active #verification-overlay {
 }
 
 
-body.overlay-active {
+/* body.overlay-active {
     filter: blur(5px); 
-}
+} */
 
 
 #verification-overlay {
