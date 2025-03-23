@@ -407,6 +407,8 @@ body {
     background-attachment: fixed;
     min-height: 100vh;
     position: relative;
+    -webkit-background-size: cover;
+    -webkit-background-attachment: fixed;
 }
 
 
@@ -433,6 +435,29 @@ body::before {
     }
 }
 
+@supports (-webkit-overflow-scrolling: touch) {
+    body {
+        background-attachment: scroll;
+    }
+    
+    .container {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .container::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('images/rsvp.jpg');
+        background-size: cover;
+        background-position: center center;
+        z-index: -1;
+    }
+}
 
 body.overlay-active * {
     visibility: hidden; 
