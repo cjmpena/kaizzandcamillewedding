@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 { value: "Beef", text: "Beef", description: "Beef Brisket with a green peppercorn sauce and crispy onions" },
                 { value: "Fish", text: "Fish", description: "Miso and maple baked salmon with toasted sesame and ginger butter" },
                 { value: "Chicken", text: "Chicken", description: "Chicken Breast Wellington with feta, sundried tomatoes and mustard cream" },
-                { value: "Vegetarian", text: "Vegetarian", description: "Butternut squash cannelloni with wilted spinach and Gruyere cheese" }
+                { value: "Vegetarian", text: "Vegetarian/Vegan/Gluten Free", description: "TBA" } //Butternut squash cannelloni with wilted spinach and Gruyere cheese
             ];
 
             // Create a hidden input for form submission
