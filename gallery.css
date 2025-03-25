@@ -1,0 +1,238 @@
+
+h1{
+    font-family: 'Dancing Script';
+}
+
+html, body {
+    scroll-behavior: smooth;
+    background-color: #f8f8f8;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar Styling */
+.navbar {
+    background-color: rgba(72, 60, 50, 0.9);
+    padding: 15px 0;
+    color: rgb(201, 194, 189);
+    position: relative;
+    z-index: 2;
+}
+
+.navbar-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: #f8f8f8;
+}
+
+.navbar-brand:hover {
+    color: rgb(201, 194, 189); 
+}
+
+.navbar-nav .nav-link {
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    color: #f8f8f8;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgb(201, 194, 189);
+}
+
+.venue-link {
+    color: rgba(94, 83, 73, 0.9);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.venue-link:hover {
+    color: rgb(201, 194, 189); 
+}
+
+.venue-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(72, 60, 50, 0.9);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.venue-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* Main Content Styling */
+.main-content {
+    flex: 1 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Improved Gallery Layout */
+.gallery {
+    background: rgba(72, 60, 50, 0.1); 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 15px;
+    padding: 20px;
+    justify-items: center; 
+}
+.gallery a {
+    position: relative; 
+    display: block; 
+}
+
+.gallery img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery a:hover img {
+    transform: scale(1.03);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+.photographer-caption {
+    font-family: 'Playfair Display';
+    font-size: 0.6rem;
+    color: #888;
+    text-align: center;
+    margin-top: 5px;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.gallery img {
+    width: 100%;
+    display: block;
+}
+
+.photographer-caption {
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    font-size: 0.7rem;
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2px 0;
+    opacity: 0.3; 
+}
+
+
+.lb-image {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Footer Navbar */
+.footer-navbar {
+    background-color: rgba(72, 60, 50, 0.9);
+    padding: 30px 0;
+    color: #f8f8f8;
+    text-align: center;
+    margin-top: auto; 
+    width: 100%;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.footer-navbar .footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-navbar .nav-item {
+    margin: 0 15px;
+}
+
+.footer-navbar .nav-link {
+    text-decoration: none;
+    color: #f8f8f8;
+    font-size: 1.1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-navbar .nav-link:hover {
+    color: rgb(201, 194, 189); 
+}
+
+.footer-navbar .footer-text {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: rgb(201, 194, 189);
+}
+
+.footer-text, 
+.footer-credit {
+    font-family: 'Georgia', serif !important;
+}
+
+.footer-credit {
+    font-size: 0.5rem;
+    color: rgb(201, 194, 189);
+    margin-top: 15px;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .col-md-8 a img {
+        height: 300px;
+    }
+    
+    .col-md-4 a img {
+        height: 400px; 
+    }
+}
+
+@media (min-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
