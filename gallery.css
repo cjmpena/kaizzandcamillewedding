@@ -220,6 +220,32 @@ html, body {
     width: 100%;
 }
 
+/* Mobile Navigation Center Fix */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        text-align: center;
+    }
+    
+    .navbar-nav {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .navbar-toggler {
+        margin-right: 0;
+    }
+    
+    .navbar-nav .nav-item {
+        margin: 5px 0;
+    }
+    
+    .navbar-nav .nav-link {
+        display: inline-block;
+    }
+}
+
 @media (min-width: 768px) {
     .col-md-8 a img {
         height: 300px;

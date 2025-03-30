@@ -29,28 +29,44 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         showSuggestions(query, true);
     });
-  
+
     function showSuggestions(query, isSearchTriggered = false) {
         suggestionsBox.innerHTML = "";
-  
+    
         if (!query) return;
-  
-        const filteredParties = partyList.filter((party) =>
-            party.partyName.toLowerCase().includes(query) // Changed to partial match
-        );
-  
+    
+        const filteredParties = partyList.filter((party) => {
+            if (party.partyName.toLowerCase().includes(query)) {
+                return true;
+            }
+            
+            const existingGuests = party.existingGuests || [];
+            return existingGuests.some(guest => 
+                guest && guest.toLowerCase().includes(query)
+            );
+        });
+    
         if (filteredParties.length > 0) {
             filteredParties.forEach((party) => {
                 const suggestion = document.createElement("div");
                 suggestion.className = "suggestion";
-                suggestion.textContent = party.partyName;
-  
+                
+                const matchedGuest = (party.existingGuests || []).find(guest => 
+                    guest && guest.toLowerCase().includes(query)
+                );
+                
+                if (matchedGuest && matchedGuest.toLowerCase() !== party.partyName.toLowerCase()) {
+                    suggestion.innerHTML = `<strong>${party.partyName}</strong> (Included in Party: ${matchedGuest})`;
+                } else {
+                    suggestion.textContent = party.partyName;
+                }
+    
                 suggestion.addEventListener("click", () => {
                     partyNameInput.value = party.partyName;
                     suggestionsBox.innerHTML = "";
                     showGuestForm(party);
                 });
-  
+    
                 suggestionsBox.appendChild(suggestion);
             });
         } else if (isSearchTriggered) {
