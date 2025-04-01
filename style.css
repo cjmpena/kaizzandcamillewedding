@@ -2,16 +2,9 @@
 html, body {
     height: 100%;
     overflow-x: hidden;
-    margin: 0;
-    padding: 0;
 }
 body.overlay-active * {
     visibility: hidden; 
-}
-
-body.hidden {
-    visibility: visible !important;
-    opacity: 1 !important;
 }
 
 body.overlay-active::before {
@@ -62,9 +55,10 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     position: relative;
-    display: flex;
-    flex-direction: column;;
 }
 
 @font-face {
@@ -106,6 +100,7 @@ h2, h6{
     }
 }
 
+/* Adding a semi-transparent white overlay */
 body::before {
     content: '';
     position: fixed;
@@ -113,8 +108,8 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.3);
-    z-index: -1;
+    background: rgba(255, 255, 255, 0.3); 
+    z-index: -1; 
 }
 
 /* Navigation Bar Styling */
@@ -235,8 +230,6 @@ body::before {
     margin-top: auto;
     width: 100%;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
-    flex-shrink: 0;
-    position: relative;
 }
 
 .footer-navbar .footer-nav {
@@ -277,7 +270,9 @@ body::before {
 }
 
 .container {
-    flex: 1 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .countdown-container {
@@ -386,8 +381,7 @@ body::before {
     color: rgb(72, 60, 50);
     padding: 50px 20px;
     border-radius: 10px;
-    margin-bottom: 30px;
-    margin-top: 30px;
+    margin-bottom: 40px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -494,4 +488,3 @@ body, h1, p {
     padding: 0;
     box-sizing: border-box;
 }
-
