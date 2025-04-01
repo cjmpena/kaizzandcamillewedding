@@ -58,6 +58,7 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 @font-face {
@@ -102,7 +103,7 @@ h2, h6{
 /* Adding a semi-transparent white overlay */
 body::before {
     content: '';
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
