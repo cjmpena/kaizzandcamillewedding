@@ -74,7 +74,9 @@ h2, h6{
 
 @media (max-width: 768px) {
     body {
-        background-position: 70% center;
+        background-image: url('images/backgroundmobile.jpg');
+        background-repeat: no-repeat;
+        background-size: 100% auto;
         background-size: cover;
     }
 }
