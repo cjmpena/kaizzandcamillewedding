@@ -397,15 +397,13 @@ html, body {
 
 body {
     font-family: 'Georgia', serif;
-    background-color: #f8f8f8;
-    color: #333;
+    background-color: #333;
     line-height: 1.6;
     text-align: center;
     background-image: url('images/rsvp.jpg');
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
-    background-repeat: no-repeat;
     min-height: 100vh;
     position: relative;
 }
@@ -413,7 +411,7 @@ body {
 
 body::before {
     content: '';
-    position: fixed;
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
@@ -424,11 +422,8 @@ body::before {
 
 @media (max-width: 768px) {
     body {
-        background-image: url('images/rsvpcopy.jpg');
-        background-color: #333; /* Match to bottom of your image */
-        background-repeat: no-repeat;
-        background-position: top center;
-        background-size: 100% auto; 
+        background-color: #333;
+        background-position: left center; 
     }
 }
 
@@ -443,7 +438,7 @@ body::before {
     visibility: hidden; 
 } */
 
-/* body.overlay-active::before {
+body.overlay-active::before {
     content: '';
     position: absolute;
     top: 0;
@@ -457,7 +452,7 @@ body::before {
 body.overlay-active #verification-overlay {
     visibility: visible; 
     z-index: 9999;
-} */
+}
 
 
 /* body.overlay-active {
