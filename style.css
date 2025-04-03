@@ -74,22 +74,47 @@ h2, h6{
 
 @media (max-width: 768px) {
     body {
-        background-image: url('images/backgroundmobile.jpg');
-        background-repeat: no-repeat;
-        background-position: center center;
+        /* Override the background image approach */
+        background-image: none; /* Remove the problematic background image */
+    }
+    
+    /* Create a new fixed position container for the background */
+    body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -2;
+        background-image: url('images/background.jpg');
         background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
     }
 }
 
 @media (max-width: 480px) {
     body {
-        background-image: url('images/backgroundmobile.jpg');
-        background-repeat: no-repeat;
-        background-position: center center;
+        /* Override the background image approach */
+        background-image: none; /* Remove the problematic background image */
+    }
+    
+    /* Create a new fixed position container for the background */
+    body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -2;
+        background-image: url('images/background.jpg');
         background-size: cover;
+        background-position: 25% center;
+        background-repeat: no-repeat;
     }
 }
-
 /* Adding a semi-transparent white overlay */
 body::before {
     content: '';
@@ -473,7 +498,6 @@ body, h1, p {
     border: none;
 }
 
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
