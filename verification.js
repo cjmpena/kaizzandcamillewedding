@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const correctPin = "2025";
+    const a =  Math.pow(5, 4) + (20 * 25) + Math.sqrt(225) + (1000 / 2) + 385;
+    const correctPin = a.toString();
     
     const isVerified = localStorage.getItem("pinVerified");
     

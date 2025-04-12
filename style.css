@@ -74,11 +74,9 @@ h2, h6{
 
 @media (max-width: 768px) {
     body {
-        /* Override the background image approach */
-        background-image: none; /* Remove the problematic background image */
+        background-image: none; 
     }
     
-    /* Create a new fixed position container for the background */
     body::after {
         content: '';
         position: fixed;
@@ -96,11 +94,9 @@ h2, h6{
 
 @media (max-width: 480px) {
     body {
-        /* Override the background image approach */
-        background-image: none; /* Remove the problematic background image */
+        background-image: none;
     }
     
-    /* Create a new fixed position container for the background */
     body::after {
         content: '';
         position: fixed;
@@ -129,9 +125,11 @@ body::before {
 
 /* Navigation Bar Styling */
 .navbar {
-    background-color: rgb(72, 60, 50, 0.9);
+    background-color: rgba(72, 60, 50, 0.9);
     padding: 15px 0;
     color: rgb(201, 194, 189);
+    position: relative;
+    z-index: 2;
 }
 
 .navbar-brand {
