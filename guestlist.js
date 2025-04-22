@@ -138,7 +138,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 guestNameInput.readOnly = true;
             }
     
-            // Add attendance options
             const attendingLabel = document.createElement("label");
             attendingLabel.textContent = `Will ${existingGuests[i - 1] || `Guest ${i}`} be attending?`;
             attendingLabel.className = "form-label";
@@ -146,7 +145,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             const attendingWrapper = document.createElement("div");
             attendingWrapper.classList.add("attending-options");
             
-            // Create the radio buttons for Yes option
             const yesWrapper = document.createElement("div");
             yesWrapper.classList.add("radio-option");
             
@@ -166,7 +164,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             yesWrapper.appendChild(yesInput);
             yesWrapper.appendChild(yesLabel);
             
-            // Create the radio buttons for No option
             const noWrapper = document.createElement("div");
             noWrapper.classList.add("radio-option");
             
@@ -203,15 +200,15 @@ document.addEventListener("DOMContentLoaded", async () => {
             const foodChoiceDisplay = document.createElement("div");
             foodChoiceDisplay.className = "custom-select-display";
             foodChoiceDisplay.setAttribute("tabindex", "0");
-            foodChoiceDisplay.textContent = "Select a food option";
+            foodChoiceDisplay.textContent = "Select your food option";
             foodChoiceDisplay.dataset.value = "";
 
             const foodChoiceOptions = document.createElement("div");
             foodChoiceOptions.className = "custom-select-options";
 
             const foodOptions = [
-                { value: "", text: "Select a food option", description: "" },
-                { value: "Beef", text: "Beef", description: "Beef Brisket with a green peppercorn sauce and crispy onions" },
+                { value: "", text: "Select your food option", description: "" },
+                { value: "Beef", text: "Beef", description: "Beef Brisket with green peppercorn sauce and crispy onions" },
                 { value: "Fish", text: "Fish", description: "Miso and maple baked salmon with toasted sesame and ginger butter" },
                 { value: "Chicken", text: "Chicken", description: "Chicken Breast Wellington with feta, sundried tomatoes and mustard cream" },
                 { value: "Vegan", text: "Vegan", description: "Vegetable stack with herb polenta, roasted peppers, portabella mushroom, grilled zucchini, and fresh arugula with confit tomatoes GF" } //Butternut squash cannelloni with wilted spinach and Gruyere cheese
@@ -267,7 +264,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 foodChoiceOptions.classList.toggle("show");
             });
 
-            // Close the dropdown when clicking outside
             document.addEventListener("click", () => {
                 foodChoiceOptions.classList.remove("show");
             });
@@ -287,16 +283,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             allergiesInput.id = `notes${i}`;
             allergiesInput.placeholder = "Enter any allergies or dietary restrictions";
             allergiesInput.className = "rsvp-form-input";
-
-            // Hide food choice and allergies by default
             foodChoiceLabel.style.display = "none";
             foodChoiceWrapper.style.display = "none";
             allergiesLabel.style.display = "none";
             allergiesInput.style.display = "none";
             
-            // Add event listeners to show/hide food choices and allergies fields based on attendance
             yesInput.addEventListener("change", function() {
-                // Show food choice and allergies when "Yes" is selected
                 foodChoiceLabel.style.display = "block";
                 foodChoiceWrapper.style.display = "block";
                 allergiesLabel.style.display = "block";
@@ -305,20 +297,17 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
     
             noInput.addEventListener("change", function() {
-                // Hide food choice and allergies when "No" is selected
                 foodChoiceLabel.style.display = "none";
                 foodChoiceWrapper.style.display = "none";
                 allergiesLabel.style.display = "none";
                 allergiesInput.style.display = "none";
-                // Clear the selections when not attending
                 hiddenFoodInput.value = "";
-                foodChoiceDisplay.textContent = "Select a food option";
+                foodChoiceDisplay.textContent = "Select your food option";
                 foodChoiceDisplay.dataset.value = "";
                 allergiesInput.value = "";
                 updateEmailFieldVisibility(attendanceRadios);
             });
     
-            // Show food choices and allergies for guests already marked as attending
             if (attendingStatus[existingGuests[i - 1]] === "Yes") {
                 foodChoiceLabel.style.display = "block";
                 foodChoiceWrapper.style.display = "block";
@@ -335,7 +324,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             guestWrapper.appendChild(allergiesLabel);
             guestWrapper.appendChild(allergiesInput);
     
-            // Add a divider after each guest except the last one
             if (i < guestLimit) {
                 const divider = document.createElement("hr");
                 divider.className = "guest-divider";
@@ -347,12 +335,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         
         guestForm.appendChild(allGuestsContainer);
     
-        // Function to check if all guests selected "No" and update email field visibility
         function updateEmailFieldVisibility(radios) {
             const allNo = radios.every(radio => radio.no.checked || (!radio.yes.checked && !radio.no.checked));
             const allSelected = radios.every(radio => radio.yes.checked || radio.no.checked);
             
-            // Only hide email if all guests selected "No" and all have made a selection
             if (allNo && allSelected) {
                 emailFieldWrapper.style.display = "none";
                 emailInput.required = false;
@@ -362,12 +348,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         }
     
-        // Initial check for email field visibility
         updateEmailFieldVisibility(attendanceRadios);
     
         guestForm.appendChild(emailFieldWrapper);
         
-        // Add a message field for the couple
         const messageWrapper = document.createElement("div");
         messageWrapper.classList.add("message-wrapper");
         messageWrapper.classList.add("form-field");
@@ -452,7 +436,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             );
 
             if (missingFoodChoices) {
-                showErrorPopup("Please select a food choice for all attending guests.");
+                showErrorPopup("Please select food choice for all attending guests.");
                 loadingIndicator.remove();
                 submitButton.disabled = false;
                 return;

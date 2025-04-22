@@ -357,39 +357,6 @@ body::before {
     }
 }
 
-/* FAQ Section Styling */
-.faq-section {
-    flex-grow: 1; /* Allows the FAQ section to grow and fill available space */
-}
-
-.faq-section .accordion-item {
-    border: none; /* Remove the border around each accordion item */
-    background-color: rgba(108, 133, 80, 0.2); /* Light sage green background for each item */
-    margin-bottom: 10px; /* Space between items */
-    border-radius: 5px; /* Rounded corners */
-}
-
-.faq-section .accordion-button {
-    background-color: rgba(108, 133, 80, 0.6); /* Slightly darker green for button */
-    color: #333; /* Text color */
-    font-weight: bold;
-    font-family: 'Georgia', serif; /* Apply Georgia font to the button */
-    border: none; /* Remove border from button */
-}
-
-.faq-section .accordion-button:focus {
-    box-shadow: none; /* Remove focus outline */
-}
-
-.faq-section .accordion-body {
-    background-color: rgba(108, 133, 80, 0.4); /* Light green for the content */
-    color: #333; /* Text color */
-    padding: 15px 20px;
-    font-family: 'Georgia', serif; /* Apply Georgia font to the content */
-    border-radius: 5px; /* Rounded corners for the content */
-}
-
-
 .wedding-header {
     background: rgba(108, 133, 80, 0.6);
     color: rgb(72, 60, 50);

@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-        // Format with consistent length using fixed-width spans
         countdown.innerHTML = `
             <span class="count-number">${days}</span> <span class="count-label">days</span> 
             <span class="count-number">${hours}</span> <span class="count-label">hours</span> 
